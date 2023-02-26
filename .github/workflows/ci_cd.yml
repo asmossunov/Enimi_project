@@ -1,0 +1,42 @@
+name: Django CI/CD
+
+on:
+  push:
+    branches: [ new_test_docker_nginx ]
+  pull_request:
+    branches: [ new_test_docker_nginx ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:14.6
+        env:
+          POSTGRES_DB: enimi_db
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: root
+        ports:
+          - '5432:5432'
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 10s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and Test
+        run: |
+          docker-compose build
+          docker-compose run --rm web sh -c "python manage.py migrate && python manage.py test"
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: enimi.hopto.org
+#          username: zhuldyz
+#          password: Zhuldyz1@3
+          script: |
+            cd /root/enimi
+            docker-compose down
+            docker-compose pull
+            docker-compose up -d
