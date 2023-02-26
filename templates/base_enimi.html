@@ -367,7 +367,7 @@
         function getNotificationsCount() {
 
             $.ajax({
-                url: 'http://localhost:8000/api/get_notifications/user/' + {{ user.pk }},
+                url: 'http://192.241.157.30:8000/api/get_notifications/user/' + {{ user.pk }},
                 method: 'get'
             })
                 .done(function (data) {
@@ -383,6 +383,7 @@
         }
 
         setInterval(getNotificationsCount, 2000);
+
     });
 </script>
 {% block script %}{% endblock %}

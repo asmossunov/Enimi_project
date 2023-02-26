@@ -185,7 +185,7 @@
         function drawMessages() {
             let nested_to_delete = document.getElementById('nested_message_box');
             $.ajax({
-                url: 'http://localhost:8000/api/response/' + {{ response.pk }} +'/get-chat/',
+                url: 'http://192.241.157.30:8000/api/response/' + {{ response.pk }} +'/get-chat/',
                 method: 'get'
             })
                 .done(function (data) {
@@ -239,7 +239,7 @@
             console.log(message)
             var $crf_token = $('[name="csrfmiddlewaretoken"]').attr('value');
             $.ajax({
-                url: 'http://localhost:8000/api/response/' + {{ response.pk }} +'/add-message/',
+                url: 'http://192.241.157.30:8000/api/response/' + {{ response.pk }} +'/add-message/',
                 method: 'POST',
                 headers: {"X-CSRFToken": $crf_token},
                 data: JSON.stringify(message),
@@ -259,4 +259,57 @@
 
         setInterval(drawMessages, 1000);
     </script>
+
 {% endblock %}
+
+
+{#                            Ученик#}
+                                {#                                {% if user.type == 'student' and user == response.author %}#}
+                                {#                                    {% if '/notifications/' in back_page %}#}
+                                {#                                        <a href="{% url 'notifications' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% else %}#}
+                                {#                                        <a href="{% url 'student_on_tutor_responses' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% endif %}#}
+                                {#                                {% elif user.type == 'student' and user != response.author %}#}
+                                {#                                    {% if '/notifications/' in back_page %}#}
+                                {#                                        <a href="{% url 'notifications' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% else %}#}
+                                {#                                        <a href="{% url 'to_me_student_responses' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% endif %}#}
+
+                                {#                                    Родитель#}
+                                {#                                {% elif user.type == 'parents' %}#}
+                                {#                                    {% if '/notifications/' in back_page %}#}
+                                {#                                        <a href="{% url 'notifications' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% elif '/responses/' in back_page %}#}
+                                {#                                        <a href="{{ back_page }}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% else %}#}
+                                {#                                        <a href="{% url 'parents_cabinet_detail' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% endif %}#}
+
+                                {#                                    Репетитор#}
+                                {#                                {% elif user.type == 'tutor' and response.author != user %}#}
+                                {#                                    {% if '/notifications/' in back_page %}#}
+                                {#                                        <a href="{% url 'notifications' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% else %}#}
+                                {#                                        <a href="{% url 'students_on_tutor_responses' user.tutor.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% endif %}#}
+                                {#                                {% elif user.type == 'tutor' and response.author == user %}#}
+                                {#                                    {% if '/notifications/' in back_page %}#}
+                                {#                                        <a href="{% url 'notifications' user.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% else %}#}
+                                {#                                        <a href="{% url 'my_responses_on_students' user.tutor.pk %}"#}
+                                {#                                           class="btn btn-primary">Назад</a>#}
+                                {#                                    {% endif %}#}
+                                {#                                {% endif %}#}
+
