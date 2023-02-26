@@ -32,11 +32,11 @@ jobs:
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         with:
-          host: 142.93.180.176
-          username: zhuldyz
-          password: Zhuldyz1@3
+          host: enimi.hopto.org
+#          username: zhuldyz
+#          password: Zhuldyz1@3
           script: |
-            cd /root/enimi1602
+            cd /root/enimi
             docker-compose down
             docker-compose pull
             docker-compose up -d
