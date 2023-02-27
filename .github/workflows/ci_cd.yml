@@ -45,9 +45,9 @@ name: Django CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ new_test_docker_nginx ]
   pull_request:
-    branches: [ main ]
+    branches: [ new_test_docker_nginx ]
 
 jobs:
   build:
