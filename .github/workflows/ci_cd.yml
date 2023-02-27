@@ -22,16 +22,14 @@ jobs:
             
     - name: Install dependencies
       run: |
-      
-        echo $SECRET_KEY
-        echo $DB_NAME
-        echo $DB_USER
-        echo $secrets.DB_PASSWORD
-        echo $secrets.DB_HOST
-        echo $secrets.DB_PORT
-
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        #         echo $SECRET_KEY
+#         echo $DB_NAME
+#         echo $DB_USER
+#         echo $secrets.DB_PASSWORD
+#         echo $secrets.DB_HOST
+#         echo $secrets.DB_PORT
 
     - name: Run tests
       run: |
