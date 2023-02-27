@@ -2,9 +2,9 @@ name: Python package
 
 on:
   push: 
-    branches: [master]
+    branches: [ new_test_docker_nginx]
   pull_request:
-    branches: [master]
+    branches: [ new_test_docker_nginx]
   
 
 jobs:
