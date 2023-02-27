@@ -26,9 +26,9 @@ jobs:
         echo ${{ secrets.SECRET_KEY }}
         echo ${{ secrets.DB_NAME }}
         echo ${{ secrets.DB_USER }}
-        echo ${{ DB_PASSWORD }}
-        echo ${{ DB_HOST }}
-        echo ${{ DB_PORT }}
+        echo ${{ secrets.DB_PASSWORD }}
+        echo ${{ secrets.DB_HOST }}
+        echo ${{ secrets.DB_PORT }}
 
         python -m pip install --upgrade pip
         pip install -r requirements.txt
