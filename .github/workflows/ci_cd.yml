@@ -18,9 +18,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-
+      
+            
     - name: Install dependencies
       run: |
+        echo ${{ secrets.REMOTE_FOLDER }}
+        echo ${{ secrets.SECRET_KEY }}
+        echo ${{ secrets.DB_NAME }}
+        echo ${{ secrets.DB_USER }}
+        echo ${{ DB_PASSWORD }}
+        echo ${{ DB_HOST }}
+        echo ${{ DB_PORT }}
+
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
