@@ -42,11 +42,6 @@ DEFAULT_FROM_EMAIL = 'enemi<no_reply@domain.com>'
 
 ALLOWED_HOSTS = ['192.241.157.30', 'enimi.hopto.org']
 
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
-
-
 # Application definition
 
 INSTALLED_APPS = [

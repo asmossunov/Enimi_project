@@ -367,7 +367,9 @@
         function getNotificationsCount() {
 
             $.ajax({
+
                 url: 'http://enimi.hopto.org/api/get_notifications/user/' + {{ user.pk }},
+
                 method: 'get'
             })
                 .done(function (data) {
@@ -383,6 +385,7 @@
         }
 
         setInterval(getNotificationsCount, 2000);
+
     });
 </script>
 {% block script %}{% endblock %}
