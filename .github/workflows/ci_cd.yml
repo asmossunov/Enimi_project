@@ -1,0 +1,36 @@
+name: Python package
+
+on:
+  push: 
+    branches: [ new_test_docker_nginx]
+  pull_request:
+    branches: [ new_test_docker_nginx]
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+      
+            
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        #         echo $SECRET_KEY
+#         echo $DB_NAME
+#         echo $DB_USER
+#         echo $secrets.DB_PASSWORD
+#         echo $secrets.DB_HOST
+#         echo $secrets.DB_PORT
+
+    - name: Run tests
+      run: |
+        python manage.py test
